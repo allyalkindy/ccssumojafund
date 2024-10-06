@@ -1,0 +1,30 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+nav{
+font-family: "Playwrite DE Grund", cursive;;
+}
+#rules{
+font-family: "Playwrite DE Grund", cursive;;
+
+}
+
+#Wrapper h1, #aboutHeader h1{
+    font-family: "Pacifico", cursive;
+}
+
+#Wrapper p, #aboutHeader p {
+    font-family: "Space Grotesk", sans-serif;
+}
+
+#explanation h1{
+font-family: "Playwrite DE Grund", cursive;
+
+}
+
+#explanation  p {
+font-family: "Playwrite DE Grund", cursive;
+
+
+}
