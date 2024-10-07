@@ -21,7 +21,7 @@ function Login() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const url = "http://localhost:5000/auth";
+      const url = "https://ccssumojafund-1.onrender.com/auth";
       const { data: res } = await axios.post(url, data);
       localStorage.setItem("token", res.data);
 

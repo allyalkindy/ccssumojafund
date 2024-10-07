@@ -43,7 +43,7 @@ const ProfilePage = () => {
     if (token) {
       const decoded = jwtDecode(token);
       axios
-        .get(`http://localhost:5000/users/${decoded._id}`)
+        .get(`https://ccssumojafund-1.onrender.com/users/${decoded._id}`)
         .then((response) => {
           setLoggedIn(response.data);
           setIsActive(response.data.isAdmin);

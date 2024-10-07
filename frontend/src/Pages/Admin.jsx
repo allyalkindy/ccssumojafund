@@ -18,7 +18,7 @@ const AdminPage = () => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:5000/users")
+      .get("https://ccssumojafund-1.onrender.com/users")
       .then((response) => {
         setMembers(response.data.data);
       })
@@ -41,7 +41,7 @@ const AdminPage = () => {
 
   const handleDelete = (currentUser) => {
     axios
-      .delete(`http://localhost:5000/users/${currentUser._id}`)
+      .delete(`https://ccssumojafund-1.onrender.com/users/${currentUser._id}`)
       .then(() => {
         setIsDeleteModalOpen(false);
         enqueueSnackbar("Member deleted successfully", { variant: "success" });
@@ -61,7 +61,10 @@ const AdminPage = () => {
     };
 
     axios
-      .put(`http://localhost:5000/users/${updatedMember._id}`, dbUpdatedMember)
+      .put(
+        `https://ccssumojafund-1.onrender.com/users/${updatedMember._id}`,
+        dbUpdatedMember
+      )
       .then(() => {
         // Find the updated member and replace it in the members array
         setMembers(
@@ -76,7 +79,8 @@ const AdminPage = () => {
       })
       .catch((err) => {
         enqueueSnackbar("Failed to update member", { variant: "error" });
-        console.error(err)});
+        console.error(err);
+      });
   };
 
   return (

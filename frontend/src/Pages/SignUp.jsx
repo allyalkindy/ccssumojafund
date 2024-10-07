@@ -27,7 +27,7 @@ function SignUp() {
     e.preventDefault();
     setError(""); // Reset error before each submission
     try {
-      const url = "http://localhost:5000/signup";
+      const url = "https://ccssumojafund-1.onrender.com/signup";
       const { data: res } = await axios.post(url, data);
       enqueueSnackbar("Sign up successfully", { variant: "success" });
       navigate("/login");
