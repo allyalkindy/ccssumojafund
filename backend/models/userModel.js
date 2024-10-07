@@ -11,7 +11,7 @@ const personSchema = new mongoose.Schema(
     fullName: { type: String, required: true },
     email: { type: String, required: true },
     password: { type: String, required: true },
-    isAdmin: { type: Boolean, default: true },
+    isAdmin: { type: Boolean, default: false },
     PaidUpTo: { type: Date, required: false, default: Date.now() },
      joinedAt: { type: Date, required: false, default: Date.now() },
   },
