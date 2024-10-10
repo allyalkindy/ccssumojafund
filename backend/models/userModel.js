@@ -12,6 +12,7 @@ const personSchema = new mongoose.Schema(
     email: { type: String, required: true },
     password: { type: String, required: true },
     isAdmin: { type: Boolean, default: false },
+    isActive: { type: Boolean, default: true },
     PaidUpTo: { type: Date, required: false, default: Date.now() },
      joinedAt: { type: Date, required: false, default: Date.now() },
   },
@@ -25,7 +26,7 @@ personSchema.methods.generateAuthToken = function () {
     },
     process.env.JWT_SECRET_KEY,
     {
-      expiresIn: "2m",
+      expiresIn: "15m",
     }
   );
   return token;
@@ -39,6 +40,7 @@ export const validate = (data) => {
     email: Joi.string().email().required().label("Email"),
     password: passwordComplexity().required().label("Password"),
     isAdmin: Joi.boolean().optional().label("Admin Status"),
+    isActive: Joi.boolean().optional().label("Active Status"),
     PaidUpTo: Joi.date().optional().label("Paid Up To Date"),
     joinedAt: Joi.date().optional().label("Joined At")
   });
