@@ -54,6 +54,12 @@ export default function NavBar() {
           >
             <IoSettingsOutline className="mr-1" /> Admin
           </Link>
+          <Link
+            to="/user"
+            className="hover:text-indigo-400 flex items-center transition-colors duration-200 lg:text-base xl:text-xl"
+          >
+            <IoSettingsOutline className="mr-1" /> Status
+          </Link>
 
           <Link
             to="/login"
@@ -98,6 +104,13 @@ export default function NavBar() {
           onClick={toggleMenu}
         >
           <IoSettingsOutline className="inline mr-1" /> Admin
+        </Link>
+        <Link
+          to="/user"
+          className="block text-center hover:text-indigo-400 transition-colors duration-200"
+          onClick={toggleMenu}
+        >
+          <IoSettingsOutline className="inline mr-1" /> Status
         </Link>
         <Link
           to="/login"
