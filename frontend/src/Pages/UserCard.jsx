@@ -46,7 +46,7 @@ const ProfilePage = () => {
         .get(`https://ccssumojafund-1.onrender.com/users/${decoded._id}`)
         .then((response) => {
           setLoggedIn(response.data);
-          setIsActive(response.data.isAdmin);
+          setIsActive(response.data.isActive);
           localStorage.setItem("IsAdmin", response.data.isAdmin);
         })
         .catch((error) => {

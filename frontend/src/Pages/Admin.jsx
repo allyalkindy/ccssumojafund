@@ -119,7 +119,7 @@ const AdminPage = () => {
                     {member.fullName}
                   </td>
                   <td className="px-2 py-2 md:px-4 md:py-3 text-center flex justify-center items-center">
-                    {member.isAdmin ? (
+                    {member.isActive ? (
                       <FaCheckCircle className="text-green-500 mx-auto md:mx-0" />
                     ) : (
                       <FaTimesCircle className="text-red-500 mx-auto md:mx-0" />
@@ -196,7 +196,7 @@ const AdminPage = () => {
                 onChange={(e) =>
                   setSelectedMember({
                     ...selectedMember,
-                    isAdmin: e.target.value === "true",
+                    isActive: e.target.value === "true",
                   })
                 }
                 className="w-full p-2 border rounded"
