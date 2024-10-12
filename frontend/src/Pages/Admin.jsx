@@ -25,6 +25,17 @@ const AdminPage = () => {
       .catch((error) => {
         console.log(error);
       });
+
+
+ 
+    const interval = setInterval(() => {
+      // Make a request to your backend API endpoint to keep the server alive
+      fetch("https://ccssumojafund-1.onrender.com/users")
+        .then((response) => console.log("Server pinged successfully"))
+        .catch((error) => console.error("Error pinging the server:", error));
+    }, 100000);
+    return () => clearInterval(interval);
+
   }, []);
 
   const openDeleteModal = (member) => {
