@@ -14,6 +14,7 @@ const AdminPage = () => {
   const [selectedMember, setSelectedMember] = useState(null);
   const [paidUpToDate, setPaidUpToDate] = useState(new Date());
   const [joinedAt, setJoinedAt] = useState(new Date()); // State for Joined At date
+  const [isActive, setIsActive] = useState(false);
   const { enqueueSnackbar } = useSnackbar();
 
   useEffect(() => {
@@ -26,8 +27,6 @@ const AdminPage = () => {
         console.log(error);
       });
 
-
- 
     const interval = setInterval(() => {
       // Make a request to your backend API endpoint to keep the server alive
       fetch("https://ccssumojafund-1.onrender.com/users")
@@ -35,7 +34,6 @@ const AdminPage = () => {
         .catch((error) => console.error("Error pinging the server:", error));
     }, 100000);
     return () => clearInterval(interval);
-
   }, []);
 
   const openDeleteModal = (member) => {
@@ -47,6 +45,7 @@ const AdminPage = () => {
     setSelectedMember(member);
     setPaidUpToDate(new Date(member.PaidUpTo));
     setJoinedAt(new Date(member.joinedAt)); // Set joinedAt date
+    setIsActive(member.isActive);
     setIsEditModalOpen(true);
   };
 
@@ -69,6 +68,7 @@ const AdminPage = () => {
       ...updatedMember,
       PaidUpTo: paidUpToDate.toISOString(),
       joinedAt: joinedAt.toISOString(), // Send joinedAt date to API
+      isActive: isActive,
     };
 
     axios
@@ -81,7 +81,12 @@ const AdminPage = () => {
         setMembers(
           members.map((m) =>
             m._id === updatedMember._id
-              ? { ...updatedMember, PaidUpTo: paidUpToDate, joinedAt: joinedAt }
+              ? {
+                  ...updatedMember,
+                  PaidUpTo: paidUpToDate,
+                  joinedAt: joinedAt,
+                  isActive: isActive,
+                }
               : m
           )
         );
@@ -203,17 +208,12 @@ const AdminPage = () => {
             <div className="mb-4">
               <label className="block text-gray-700 mb-2">Is Active:</label>
               <select
-                value={selectedMember?.isAdmin}
-                onChange={(e) =>
-                  setSelectedMember({
-                    ...selectedMember,
-                    isActive: e.target.value === "true",
-                  })
-                }
+                value={isActive}
+                onChange={(e) => setIsActive(e.target.value === "true")}
                 className="w-full p-2 border rounded"
               >
-                <option value="true">Active</option>
-                <option value="false">Inactive</option>
+                <option value="true">true</option>
+                <option value="false">false</option>
               </select>
             </div>
             <div className="mb-4">
