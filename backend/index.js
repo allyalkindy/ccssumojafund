@@ -8,11 +8,11 @@ import signUpRoute from "./routes/signUpRoute.js";
 import path from "path";
 
 const __dirname = path.resolve();
+dotenv.config();
 
 const app = express();
 app.use(express.json());
 app.use(cors());
-dotenv.config();
 
 const connString = process.env.MONGO_URL;
 const Port = process.env.PORT || 5000;
